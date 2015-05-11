@@ -3,6 +3,7 @@ For Ruby study using
 
 Referrence link:
 http://happypeter.github.io/rails10/ 
+http://happypeter.github.io/rails-tricks/
 
 ## C9 mysql config:
 # install mysql

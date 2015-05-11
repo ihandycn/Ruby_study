@@ -1,6 +1,8 @@
 class IssuesController < ApplicationController
   def show
+    #[Kieth] 调试语句
   	#render plain: params[:id].inspect
+  	
   	@issue = Issue.find(params[:id])
 
     @comments = @issue.comments
