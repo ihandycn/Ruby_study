@@ -1,3 +1,12 @@
 class User < ActiveRecord::Base
     has_secure_password
+    before_create { generate_token(:auth_token) }
+    validates :name, :email, presence: true # 保证必须有这些数据
+    validates :name, :email, uniqueness: {case_sensitive: false} # 唯一并忽略大小写
+
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while User.exists?(column => self[column])
+    end
 end
