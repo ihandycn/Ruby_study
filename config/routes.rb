@@ -19,7 +19,8 @@ Rails.application.routes.draw do
    resources :users, only: [:create]
 
   # comments
-  post '/issues/:issue_id/comments' => "comments#create"
+  # post '/issues/:issue_id/comments' => "comments#create"
+  resources :comments, only: [:create]
 
    #get 'issues/new' => 'issues#new'
    #get 'issues' => 'issues#index', :as => 'issues'
