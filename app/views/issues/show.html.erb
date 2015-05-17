@@ -23,10 +23,12 @@
     </article>
 
 
-    <% if current_user %>
-      <%= render partial: 'shared/comment_list', locals: {comments: @comments} %>
-      <%= render partial: 'shared/comment_box', locals: {issue: @issue} %>
+    <% @comments.each do |c| %>
+      <%= render partial: 'shared/comment', locals: {c: c} %>
     <% end %>
 
   </div>
+  <% if current_user %>
+    <%= render partial: 'shared/comment_box', locals: {issue: @issue} %>
+  <% end %>
 </div>

@@ -1,4 +1,4 @@
-alert("hello");
 
-<!--$('.replies').append("<%= escape_javascript render 'shared/comment' %>");-->
-$('.replies').append("<%= j render 'shared/comment' %>");
+$('.replies').append("<%= j render(partial: 'shared/comment', locals: {c: @comment}) %>");
+
+$(".reply textarea").val('');

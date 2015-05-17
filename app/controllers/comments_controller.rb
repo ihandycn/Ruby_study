@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
 		# c.issue_id = params[:issue_id]
 		# c.save
 		
-		c = Comment.new(comment_params)
-		c.save
+		@comment = Comment.new(comment_params)
+		@comment.save
 
 		#issue = Issue.find(params[:issue_id])
 		# redirect_to c.issue
