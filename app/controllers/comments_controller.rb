@@ -1,16 +1,26 @@
 class CommentsController < ApplicationController
 
 	def create
-		#render plain: params.inspect
-
-		c = Comment.new
-		c.username = params[:username]
-		c.email = params[:email]
-		c.content = params[:content]
-		c.issue_id = params[:issue_id]
+		# c = Comment.new
+		# c.username = params[:username]
+		# c.email = params[:email]
+		# c.content = params[:content]
+		# c.issue_id = params[:issue_id]
+		# c.save
+		
+		c = Comment.new(comment_params)
 		c.save
 
 		#issue = Issue.find(params[:issue_id])
-		redirect_to c.issue
+		# redirect_to c.issue
+		
+		respond_to do |format|
+			format.js
+		end
+	end
+	
+	private
+	def comment_params
+		params.require(:comment).permit(:issue_id, :user_id, :content)
 	end
 end
