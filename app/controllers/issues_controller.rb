@@ -9,10 +9,15 @@ class IssuesController < ApplicationController
   end
 
   def new
-  	@issue = Issue.new
-  end
+    if not current_user
+      flash[:notice] = "Please login first"
+      redirect_to :root
+    else
+     @issue = Issue.new
+   end
+ end
 
-  def create
+ def create
     #render plain: params[:issue].inspect
     Issue.create(issue_params)
     redirect_to :root
@@ -35,7 +40,7 @@ class IssuesController < ApplicationController
   end
 
   private
-    def issue_params
-      params.require(:issue).permit(:title, :content)
-    end
+  def issue_params
+    params.require(:issue).permit(:title, :content, :user_id)
+  end
 end
